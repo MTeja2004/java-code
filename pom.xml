@@ -1,147 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>StreamZone</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0e0e10;
-      color: #fff;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #1a1a1a;
-      padding: 1rem 2rem;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #1dbf73;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav li {
-      cursor: pointer;
-      font-weight: 500;
-    }
-
-    .hero {
-      background: url('https://via.placeholder.com/1200x500') center/cover no-repeat;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 0 4rem;
-    }
-
-    .hero-content h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-content p {
-      font-size: 1.1rem;
-    }
-
-    .hero-content button {
-      padding: 0.7rem 1.5rem;
-      font-size: 1rem;
-      background-color: #1dbf73;
-      border: none;
-      cursor: pointer;
-      margin-top: 1rem;
-      color: white;
-      border-radius: 5px;
-    }
-
-    .carousel {
-      padding: 2rem;
-    }
-
-    .carousel h2 {
-      margin-bottom: 1rem;
-    }
-
-    .carousel-container {
-      display: flex;
-      gap: 1rem;
-      overflow-x: auto;
-    }
-
-    .carousel-container img {
-      width: 200px;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 8px;
-      flex-shrink: 0;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #1a1a1a;
-      margin-top: 2rem;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="logo">StreamZone</div>
-    <nav>
-      <ul>
-        <li>Home</li>
-        <li>TV</li>
-        <li>Movies</li>
-        <li>Sports</li>
-      </ul>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Featured Show</h1>
-      <p>Watch the latest blockbuster now</p>
-      <button>Watch Now</button>
-    </div>
-  </section>
-
-  <section class="carousel">
-    <h2>Popular on StreamZone</h2>
-    <div class="carousel-container">
-      <img src="https://via.placeholder.com/200x300" alt="Movie 1" />
-      <img src="https://via.placeholder.com/200x300" alt="Movie 2" />
-      <img src="https://via.placeholder.com/200x300" alt="Movie 3" />
-      <img src="https://via.placeholder.com/200x300" alt="Movie 4" />
-    </div>
-  </section>
-
-  <section class="carousel">
-    <h2>Trending Now</h2>
-    <div class="carousel-container">
-      <img src="https://via.placeholder.com/200x300" alt="Movie 5" />
-      <img src="https://via.placeholder.com/200x300" alt="Movie 6" />
-      <img src="https://via.placeholder.com/200x300" alt="Movie 7" />
-      <img src="https://via.placeholder.com/200x300" alt="Movie 8" />
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 StreamZone. All rights reserved.</p>
-  </footer>
-</body>
-</html>
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.mycompany.app</groupId>
+  <artifactId>my-app</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>my-app</name>
+  <url>https://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.12.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.14.0</version>
+          <configuration>
+            <release>17</release>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <!-- Build an executable JAR -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.4.2</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+              <mainClass>com.mycompany.app.App</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>3.5.0</version>
+        <executions>
+          <execution>
+            <id>enforce-maven</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <version>[3.9.2,)</version>
+                </requireMavenVersion>
+                <requireJavaVersion>
+                  <version>[17,)</version>
+                </requireJavaVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
